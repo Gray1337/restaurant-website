@@ -7,14 +7,13 @@ const Nav = styled.div`
   display:flex;
   justify-content:space-between;
   width:100%;
-  align-items:center;
+  padding:20px 0;
 `
 const LogoContainer = styled.div`
   background-position:center;
   background-repeat: no-repeat;
   background-size:contain;
   width:56px;
-  padding-top:24px;
   @media (min-width:1365px){
     width:80px;
     padding-top:0px;

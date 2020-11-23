@@ -13,7 +13,7 @@ const Ul = styled.div`
   top:0;
   right:0;
   transition:all .3s;
-  transform:${({open})=> open ? 'translateX(0%)': 'translateX(100%)'};
+  transform:${(props) => props.open ? 'translateX(0%)': 'translateX(100%)'};
   li{
     color:#fff;
     font-size:24px;
@@ -28,15 +28,18 @@ const Ul = styled.div`
     width:100%;
     li{
       color:#000;
-      padding:32px;
+      padding:10px;
+      :last-child{
+        padding-right:0px;
+      }
     }
   }
 
 `
 
-const RightNav = ({open}) =>{
+const RightNav = (props) =>{
   return(
-    <Ul open={open}>
+    <Ul open={props.open}>
       <Link to='/about'>
         <li>About</li>
       </Link>

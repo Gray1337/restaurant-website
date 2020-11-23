@@ -6,32 +6,35 @@ import Menu from './pages/Menu';
 import ShopInfo from './pages/ShopInfo';
 import Booking from './pages/Booking';
 import 'antd/dist/antd.css';
+import ViewportProvider from "./components/Common/ViewPortContext";
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/menu">
-          <Menu />
-        </Route>
-        <Route exact path="/menu">
-          <Menu />
-        </Route>
-        <Route exact path="/shopinfo">
-          <ShopInfo />
-        </Route>
-        <Route exact path="/booking">
-          <Booking />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <ViewportProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/menu">
+            <Menu />
+          </Route>
+          <Route exact path="/menu">
+            <Menu />
+          </Route>
+          <Route exact path="/shopinfo">
+            <ShopInfo />
+          </Route>
+          <Route exact path="/booking">
+            <Booking />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </ViewportProvider>
   );
 }
 

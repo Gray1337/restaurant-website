@@ -10,25 +10,24 @@ import Container from "../components/Common/Container";
 import ClearFix from "../components/Common/ClearFix";
 import Logo from "../components/Images/logo.svg";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import PlatesBg from "../components/Images/platesbg.png";
 import RestaurantBg from '../components/Images/restaurantbg.jpg'
+import { useViewport } from "../components/Common/ViewPortContext";
+import FlexTypeOne from '../components/FlexTypeOne'
+import FlexTypeTwo from '../components/FlexTypeTwo'
+import Test from '../components/Test'
 
-const LogoContainer = styled.div`
-  background-image: ${(props) => `url(${props.src})`};
-  width: ${(props) => props.width};
-  height: ${(props) => props.width};
-  background-position: ${(props) => props.bgp};
-  background-size: contain;
-  background-repeat: no-repeat;
-`;
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 `;
-const JumbotronContainer = styled.div`
-  width: 100%;
-  height: 100vh;
+const JumTitle = styled.div`
+  font-size: 48px;
+  font-weight: bold;
+`;
+const JumP = styled.div`
+  font-size: 24px;
+  font-weight: 300;
 `;
 const JumboImg = styled.div`
   background-image: ${(props) => `url(${props.src})`};
@@ -39,34 +38,104 @@ const JumboImg = styled.div`
   height: ${props => props.height};
   width: 100%;
 `;
+const JumbotronContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+`;
 const Des = styled.div`
   position: absolute;
-  top: 50%;
-  left: 5%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  @media (min-width:681px){
+    left: 5%;
+    transform:translate(0%);
+  }
 `;
-const JumTitle = styled.div`
-  font-size: 48px;
-  font-weight: bold;
+const LogoContainer = styled.div`
+  width:30%;
+  min-width:75px;
+  max-width:130px;
+  margin-bottom:36px;
+  position:relative;
+  @media (min-width:681px){
+    margin-bottom:0px;
+    max-width:160px;
+  }
+  img{
+    @media (min-width:681px){
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
 `;
-const JumP = styled.div`
-  font-size: 24px;
-  font-weight: 300;
-`;
+const ProduceContainer = styled.div`
+  width:100%;
+  max-width:100%;
+`
 const Row = styled.div`
-  width: 100%;
   margin-top: 160px;
   display: flex;
+  flex-flow:column nowrap;
+  width: 100%;
+  position:relative;
+  @media (min-width:681px){
+    flex-flow:row nowrap;
+  }
 `;
+const InfoContainer = styled.div`
+  width:100%;
+  padding:0 10%;
+  width:100%;
+  @media (min-width:681px){
+    padding:0 5%;
+    width:40%;
+  }
+`
 const ImgContainer = styled.div`
-  background-image: ${(props) => `url(${props.src})`};
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 56.25%;
+  margin-bottom:36px;
+  width:100%;
+  img{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%
+  }
+  @media (min-width:681px){
+    margin-bottom:0px;
+    width:60%;
+  }
 `;
+const AboutContainer = styled.div`
+  width: 100%;
+  margin-bottom:36px;
+  border-bottom:1px solid rgb(189 189 189);
+  @media (min-width:681px){
+    margin-bottom:0px;
+    width: 40%;
+    border-right:1px solid rgb(189 189 189);
+    border-bottom:0;
+    margin-right:30px;
+  }
+`
+const BottomContainer = styled.div`
+  display:flex;
+  flex-flow:column nowrap;
+  width:80%;
+  height:100%;
+  margin:0 auto;
+  @media (min-width:681px){
+    width:90%;
+    flex-flow:row nowrap;
+  }
+`
 const Title = styled.div`
   font-size: 24px;
-  margin: 0px 0 24px 0;
+  margin-bottom: 24px;
   line-height: 1.7;
   letter-spacing: 0.08rem;
 `;
@@ -77,7 +146,7 @@ const Para = styled.div`
   letter-spacing: 0.08rem;
 `;
 const Btn = styled.button`
-  width: 240px;
+  width: 160px;
   height: 50px;
   padding: 4px 8px;
   text-align: left;
@@ -86,12 +155,36 @@ const Btn = styled.button`
   cursor: pointer;
   color: #000;
   margin-right:32px;
+  @media (min-width:1365px){
+    width:240px;
+  }
 `;
+const BtnGroup =styled.div`
+  display:flex;
+  flex-flow:row nowrap;
+  padding-top:24px;
+`
+// 問題:為什麼 width > Desktop 時沒有反應?? 更聰明的做法是?
+const MobileSize = () =>{
+  const {width} = useViewport()
+  const mobile = 681
+  const Desktop = 1366
+  if ( width < mobile ){
+    return <FlexTypeOne />
+  } else if ( mobile < width < Desktop){
+    return <FlexTypeTwo />
+  } else if ( width > Desktop){
+    <Test />
+  }
+}
+// 問題
+
 
 const HomePage = () => {
   return (
     <Default fixedHeader>
-      {/* <ClearFix /> */}
+      <ClearFix height='100px'/>
+      {/* jumbotron */}
       <Box>
         <JumbotronContainer>
           <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
@@ -106,17 +199,19 @@ const HomePage = () => {
           <JumP>Respect Old Things, Create Present Innovate the Tradition</JumP>
         </Des>
       </Box>
+      {/* main section */}
       <Box>
-        <Row>
-          <Container style={{ display: "flex" }}>
-            <div style={{ width: "30%" }}>
-              <LogoContainer src={Logo} width={"100%"} bgp={"left"} />
-            </div>
-            <div className="" style={{ width: "70%" }}>
+        {/* section 1 */}
+        <Container>
+          <Row>
+            <LogoContainer>
+              <img src={Logo} alt=''></img>
+            </LogoContainer>
+            <ProduceContainer>
               <Para
                 style={{
                   paddingLeft: "56px",
-                  borderLeft: "1px solid #e8e8e8",
+                  borderLeft: "1px solid rgb(189 189 189)",
                   marginBottom: "0px",
                 }}
               >
@@ -129,102 +224,82 @@ const HomePage = () => {
                 atque totam veniam saepe unde officia accusantium doloremque
                 nobis consectetur aspernatur nihil.
               </Para>
-            </div>
-          </Container>
-        </Row>
+            </ProduceContainer>
+          </Row>
+        </Container>
+        {/* section 2 */}
         <Row>
-          <div className="" style={{ width: "60%" }}>
-            <ImgContainer src={Jumbotron3} />
-          </div>
-          <div
-            className=""
-            style={{ width: "40%", padding: "0 5%", alignSelf: "center" }}
-          >
+          <ImgContainer>
+            <img src={Jumbotron3} alt=''></img>
+          </ImgContainer>
+          <InfoContainer>
+            <Title>
+              Lorem ipsum dolor sit amet elit. Modi, voluptate!
+            </Title>
+            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto voluptatum maiores assumenda rem temporibus culpa.
+            </Para>
+            <Link to="/menu">
+              <Btn>Menu</Btn>
+            </Link>
+          </InfoContainer>
+        </Row>
+        {/* section 3 */}
+        {/* <Row>
+          <ImgContainer>
+            <img src={PlatesBg} alt={''} />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>
+              Lorem ipsum dolor sit amet Modi, voluptate!
+            </Title>
+            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, quae.
+            </Para>
+            <Link to="/menu">
+              <Btn>Menu</Btn>
+            </Link>
+          </InfoContainer>
+        </Row> */}
+        <MobileSize />
+        {/* section 4 */}
+        <Row>
+          <ImgContainer>
+            <img src={Jumbotron4} alt=''/>
+          </ImgContainer>
+          <InfoContainer>
             <Title>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
               voluptate!
             </Title>
             <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse,
-              velit dolore. Iure dolores aut eius nulla voluptas nobis esse
-              autem amet ea ullam optio sapiente, neque suscipit dolor, id
-              repellat.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, officiis.
             </Para>
             <Link to="/menu">
               <Btn>Menu</Btn>
             </Link>
-          </div>
+          </InfoContainer>
         </Row>
-        <Row>
-          <div
-            className=""
-            style={{ width: "40%", padding: "0 5%", alignSelf: "center" }}
-          >
-            <Title>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              voluptate!
-            </Title>
-            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse,
-              velit dolore. Iure dolores aut eius nulla voluptas nobis esse
-              autem amet ea ullam optio sapiente, neque suscipit dolor, id
-              repellat.
-            </Para>
-            <Link to="/menu">
-              <Btn>Menu</Btn>
-            </Link>
-          </div>
-          <div className="" style={{ width: "60%" }}>
-            <img src={PlatesBg} alt={''} style={{width:'100%'}}/>
-          </div>
-        </Row>
-        <Row>
-          <div className="" style={{ width: "60%" }}>
-            <ImgContainer src={Jumbotron4} />
-          </div>
-          <div
-            className=""
-            style={{ width: "40%", padding: "0 5%", alignSelf: "center" }}
-          >
-            <Title>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              voluptate!
-            </Title>
-            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse,
-              velit dolore. Iure dolores aut eius nulla voluptas nobis esse
-              autem amet ea ullam optio sapiente, neque suscipit dolor, id
-              repellat.
-            </Para>
-            <Link to="/menu">
-              <Btn>Menu</Btn>
-            </Link>
-          </div>
-        </Row>
+        {/* section 5 */}
         <Row>
           <JumboImg src={RestaurantBg} height={'100%'} fixed={'initial'} style={{paddingTop:'30%'}}/>
         </Row>
+        {/* bottom */}
         <Row>
-          <Container style={{ display: "flex" }}>
-            <div style={{ width: "30%", padding:'0 5%' }}>
+          <BottomContainer>
+            <AboutContainer>
               <Title>Lorem ipsum dolor sit amet consectetur?</Title>
-            </div>
-            <div className="" style={{ width: "70%" }}>
-              <Para
-                style={{
-                  paddingLeft: "56px",
-                  borderLeft: "1px solid #e8e8e8",
-                  marginBottom: "0px",
-                }}
-              >
+            </AboutContainer>
+            <ProduceContainer>
+              <Para>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure eaque earum modi debitis vero quae corporis a! Accusamus minima, eveniet accusantium ratione nostrum totam id sed incidunt doloribus, molestias et.
-                <div className="" style={{paddingTop:'24px'}}>
+                <BtnGroup>
                   <Btn>Shop's Preference</Btn>
                   <Btn>Shop Info</Btn>
-                </div>
+                </BtnGroup>
               </Para>
-            </div>
-          </Container>
+            </ProduceContainer>
+          </BottomContainer>
         </Row>
       </Box>
     </Default>

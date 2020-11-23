@@ -5,7 +5,7 @@ import RightNav from '../Nav/RightNav'
 const StyledBurger = styled.div`
   position:fixed;
   top:20px;
-  right:20px;
+  right:10%;
   width:50px;
   height:40px;
   display:flex;
@@ -16,18 +16,21 @@ const StyledBurger = styled.div`
     width:40px;
     height:2px;
     border-radius:4px;
-    background-color:${({open}) => open ? '#fff' : '#000'};
+    background-color:${(props) => props.open ? '#fff' : '#000'};
     transform-origin:0px;
     transition:all 0.3s;
     &:nth-child(1){
-      transform:${({open})=> open ? 'rotate(45deg)': 'rotate(0)'}
+      transform:${(props) => props.open ? 'rotate(45deg)': 'rotate(0)'}
     }
     &:nth-child(2){
-      opacity:${({open}) => open ? 0 : 1}
+      opacity:${(props) => props.open ? 0 : 1}
     }
     &:nth-child(3){
-      transform:${({open})=> open ? 'rotate(-45deg)': 'rotate(0)'}
+      transform:${(props) => props.open ? 'rotate(-45deg)': 'rotate(0)'}
     }
+  }
+  @media (min-width:681px){
+    right:5%;
   }
   @media (min-width:1365px){
     display:none;
