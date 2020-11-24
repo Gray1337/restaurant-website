@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import PlatesBg from "../components/Images/platesbg.png";
+import PlatesBg from "../Images/image2.jpg";
 const Para = styled.div`
   font-size: 18px;
   line-height: 2.2;
@@ -57,7 +57,7 @@ const Title = styled.div`
   letter-spacing: 0.08rem;
 `;
 
-const FlexTypeOne =() =>{
+const Test =() =>{
   return(
     <Row>
       <ImgContainer>
@@ -65,10 +65,10 @@ const FlexTypeOne =() =>{
       </ImgContainer>
       <InfoContainer>
         <Title>
-          Lorem ipsum dolor sit amet Modi, voluptate!
+          測試測試測試測試測試測試
         </Title>
         <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, quae.
+          這裡有字這裡有字這裡有字這裡有字這裡有字這裡有字這裡有字這裡有字
         </Para>
         <Link to="/menu">
           <Btn>Menu</Btn>
@@ -77,4 +77,4 @@ const FlexTypeOne =() =>{
     </Row>
   )
 }
-export default FlexTypeOne
+export default Test

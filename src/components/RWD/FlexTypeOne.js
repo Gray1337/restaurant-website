@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import PlatesBg from "../components/Images/platesbg.png";
+import PlatesBg from "../Images/platesbg.png";
 const Para = styled.div`
   font-size: 18px;
   line-height: 2.2;
@@ -57,9 +57,12 @@ const Title = styled.div`
   letter-spacing: 0.08rem;
 `;
 
-const FlexTypeTwo =() =>{
+const FlexTypeOne =() =>{
   return(
     <Row>
+      <ImgContainer>
+        <img src={PlatesBg} alt={''} />
+      </ImgContainer>
       <InfoContainer>
         <Title>
           Lorem ipsum dolor sit amet Modi, voluptate!
@@ -71,10 +74,7 @@ const FlexTypeTwo =() =>{
           <Btn>Menu</Btn>
         </Link>
       </InfoContainer>
-      <ImgContainer>
-        <img src={PlatesBg} alt={''} />
-      </ImgContainer>
     </Row>
   )
 }
-export default FlexTypeTwo
+export default FlexTypeOne

@@ -3,13 +3,19 @@ import styled from "styled-components";
 import Container from "../Common/Container";
 import footerBg from "../Images/bg.jpg";
 import LogoHorizontal from "../Images/logohorizontal.svg";
-import Box from '../Common/Box';
 import { FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 import { DatePicker, Space } from 'antd';
 import moment from 'moment';
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
-
+const Box = styled.div`
+  display:flex;
+  flex-direction:column;
+  align-items:top;
+  @media (min-width:1365px){
+    flex-direction:row;
+  }
+`
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-evenly;

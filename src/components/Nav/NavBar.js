@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 import Logo from '../Images/logo.svg'
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+
 
 const Nav = styled.div`
   display:flex;
@@ -23,9 +25,11 @@ const LogoContainer = styled.div`
 const NavBar = () =>{
   return(
   <Nav>
-    <LogoContainer>
-      <img src={Logo} alt=''></img>
-    </LogoContainer>
+    <Link to='/'>
+      <LogoContainer>
+        <img src={Logo} alt=''></img>
+      </LogoContainer>
+    </Link>
     <Burger />
   </Nav>
   )

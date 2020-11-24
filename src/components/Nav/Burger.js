@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import RightNav from '../Nav/RightNav'
 
 const StyledBurger = styled.div`
-  position:fixed;
   top:20px;
   right:10%;
   width:50px;
@@ -19,6 +18,8 @@ const StyledBurger = styled.div`
     background-color:${(props) => props.open ? '#fff' : '#000'};
     transform-origin:0px;
     transition:all 0.3s;
+    z-index:20;
+
     &:nth-child(1){
       transform:${(props) => props.open ? 'rotate(45deg)': 'rotate(0)'}
     }

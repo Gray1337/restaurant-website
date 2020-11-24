@@ -12,9 +12,10 @@ import Logo from "../components/Images/logo.svg";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import RestaurantBg from '../components/Images/restaurantbg.jpg'
 import { useViewport } from "../components/Common/ViewPortContext";
-import FlexTypeOne from '../components/FlexTypeOne'
-import FlexTypeTwo from '../components/FlexTypeTwo'
-import Test from '../components/Test'
+import FlexContainer from '../components/Common/FlexContainer'
+import FlexTypeOne from '../components/RWD/FlexTypeOne'
+import FlexTypeTwo from '../components/RWD/FlexTypeTwo'
+import Test from '../components/RWD/Test'
 
 const Box = styled.div`
   display: flex;
@@ -78,13 +79,14 @@ const ProduceContainer = styled.div`
   max-width:100%;
 `
 const Row = styled.div`
-  margin-top: 160px;
+  margin-top: 100px;
   display: flex;
   flex-flow:column nowrap;
   width: 100%;
   position:relative;
   @media (min-width:681px){
     flex-flow:row nowrap;
+    margin-top: 160px;
   }
 `;
 const InfoContainer = styled.div`
@@ -122,19 +124,9 @@ const AboutContainer = styled.div`
     margin-right:30px;
   }
 `
-const BottomContainer = styled.div`
-  display:flex;
-  flex-flow:column nowrap;
-  width:80%;
-  height:100%;
-  margin:0 auto;
-  @media (min-width:681px){
-    width:90%;
-    flex-flow:row nowrap;
-  }
-`
+
 const Title = styled.div`
-  font-size: 24px;
+  font-size: 32px;
   margin-bottom: 24px;
   line-height: 1.7;
   letter-spacing: 0.08rem;
@@ -286,7 +278,7 @@ const HomePage = () => {
         </Row>
         {/* bottom */}
         <Row>
-          <BottomContainer>
+          <FlexContainer>
             <AboutContainer>
               <Title>Lorem ipsum dolor sit amet consectetur?</Title>
             </AboutContainer>
@@ -299,7 +291,7 @@ const HomePage = () => {
                 </BtnGroup>
               </Para>
             </ProduceContainer>
-          </BottomContainer>
+          </FlexContainer>
         </Row>
       </Box>
     </Default>
