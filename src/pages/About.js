@@ -12,7 +12,6 @@ import ImgGroup5 from '../components/Images/image5.jpg'
 import ImgGroup6 from '../components/Images/image6.jpg'
 import ShopInfoImg from '../components/Images/image9.jpg'
 import MenuImg from '../components/Images/image8.jpg'
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import FianlSectionPart from '../components/FinalPart/FinalSectionPart'
 
 const Landscape = styled.div`
@@ -147,54 +146,6 @@ const ParaBox = styled.div`
     padding-left:16px;
   }
 `
-const FinalSection =styled.div`
-  display:flex;
-  flex-flow:column nowrap;
-  width:100%;
-  @media (min-width:1365px){
-    flex-flow:row nowrap;
-  }
-  a{
-    @media (min-width:1365px){
-      margin-right:32px;
-    }
-    &:last-child{
-      margin-right:0px;
-    }
-  }
-`
-const FinalBox = styled.div`
-  width:100%;
-  display:flex;
-  flex-flow:row nowrap;
-  border:1px solid rgb(225,225,225);
-  height:104px;
-  margin-bottom:32px;
-  @media (min-width:1365px){
-    margin-bottom:0px;
-  }
-`
-const FinalItem = styled.div`
-  width:40%;
-  overflow:hidden;
-  position: relative;
-`
-const PreviewImg = styled.div`
-  width:100%;
-  padding-top:100%;
-  background-image: ${props => `url(${props.src})`};
-  background-position:center;
-  background-repeat: no-repeat;
-  background-size:cover;
-`
-const FinalContent = styled.div`
-  padding:24px;
-  width:60%;
-  margin:auto;
-  h1{
-    margin:0;
-  }
-`
 const Title = styled.div`
   font-size: 32px;
   margin-bottom: 24px;
@@ -216,7 +167,6 @@ const Para = styled.div`
   margin-bottom: 24px;
   letter-spacing: 0.08rem;
 `;
-
 
 const About = () =>{
   return(
