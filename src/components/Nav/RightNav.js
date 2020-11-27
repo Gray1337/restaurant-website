@@ -12,6 +12,7 @@ const Ul = styled.div`
   width:300px;
   top:0;
   right:0;
+  z-index:19;
   transition:all .3s;
   transform:${(props) => props.open ? 'translateX(0%)': 'translateX(100%)'};
   li{
@@ -28,7 +29,7 @@ const Ul = styled.div`
     width:100%;
     li{
       color:#000;
-      padding:10px;
+      padding:10px 16px;
       :last-child{
         padding-right:0px;
       }

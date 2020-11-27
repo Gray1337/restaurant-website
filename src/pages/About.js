@@ -11,20 +11,10 @@ import ImgGroup4 from '../components/Images/image4.jpg'
 import ImgGroup5 from '../components/Images/image5.jpg'
 import ImgGroup6 from '../components/Images/image6.jpg'
 import ShopInfoImg from '../components/Images/image9.jpg'
-import MenuImg from '../components/Images/image8.jpg'
+import MenuImg from '../components/Images/image5.jpg'
 import FianlSectionPart from '../components/FinalPart/FinalSectionPart'
+import Landscape from '../components/Common/Landscape'
 
-const Landscape = styled.div`
-  width: 100%;
-  position: relative;
-`
-const BgContainer =styled.div`
-  width:100%;
-  padding-top:30%;
-  background-image: ${props => `url(${props.src})`};
-  background-position:center;
-  background-size:cover;
-`
 const Box = styled.div`
   display: flex;
   flex-flow:column nowrap;
@@ -34,32 +24,6 @@ const Box = styled.div`
     margin-top: 160px;
   }
 `;
-const AboutTitle = styled.div`
-  font-size:24px;
-  font-weight:bold;
-  color:#fff;
-  position: absolute;
-  left:10%;
-  bottom:10%;
-  letter-spacing:.3rem;
-  line-height:1.3rem;
-  &:after{
-    content:'';
-    width:100%;
-    height:1px;
-    background-color:#fff;
-    position: absolute;
-    bottom:0;
-    left: 0;
-  }
-  @media (min-width:681px){
-    font-size:48px;
-    left:5%;
-    bottom:5%;
-    letter-spacing:.5rem;
-    line-height:2rem;
-  }
-`
 const Row = styled.div`
   margin-top: 100px;
   display: flex;
@@ -166,18 +130,19 @@ const Para = styled.div`
   line-height: 2.2;
   margin-bottom: 24px;
   letter-spacing: 0.08rem;
+  &:last-child{
+    margin-bottom: 0px;
+  }
 `;
 
 const About = () =>{
   return(
     <Default>
       {/* Landscape */}
-      <Landscape>
-        <BgContainer src={bgImage}>
-          {/* <img src={bgImage} alt=''></img> */}
-        </BgContainer>
-        <AboutTitle>About</AboutTitle>
-      </Landscape>
+      <Landscape 
+      landscapeImg={bgImage}
+      title={'About'}
+       />
       {/* main section */}
       <Container>
         {/* section one */}
