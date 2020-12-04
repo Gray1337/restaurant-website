@@ -7,12 +7,13 @@ import ShopInfo from './pages/ShopInfo';
 import Booking from './pages/Booking';
 import 'antd/dist/antd.css';
 import ViewportProvider from "./components/Common/ViewPortContext";
-
+import ScrollToTop from './components/Common/ScrollToTop'
 
 function App() {
   return (
     <ViewportProvider>
       <BrowserRouter>
+      <ScrollToTop />
         <Switch>
           <Route exact path="/">
             <HomePage />

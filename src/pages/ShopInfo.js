@@ -24,30 +24,24 @@ const MapContainer= styled.div`
   display:flex;
   position: relative;
 `
-const Title = styled.div`
-  font-size: 32px;
-  margin-bottom: 24px;
-  line-height: 1.7;
-  letter-spacing: 0.08rem;
-  div{
-    margin-bottom:32px;
-  }
-  @media (min-width:681px){
-    div{}
-    &:last-child{
-      margin-bottom:0px;
+const TableOutter = styled.div`
+  width:90%;
+  margin:0 auto;
+`
+const InfoTable = styled.table`
+  width:100%;
+  font-size:20px;
+  tr{
+    border-bottom:1px solid rgb(190,190,190);
+    border-top:1px solid rgb(190,190,190);
+    th,td{
+      padding:20px 0;
+    }
+    td{
+      padding-left:20px;
     }
   }
-`;
-const Para = styled.div`
-  font-size: 18px;
-  line-height: 2.2;
-  margin-bottom: 24px;
-  letter-spacing: 0.08rem;
-  &:last-child{
-    margin-bottom: 0px;
-  }
-`;
+`
 
 const ShopInfo = () =>{
   return(
@@ -60,12 +54,47 @@ const ShopInfo = () =>{
       <Container>
         {/* section one */}
         <Box>
-          <div className="">123</div>
+          <TableOutter>
+            <InfoTable className="">
+              <tbody>
+                <tr className="">
+                  <th className="">Shop Name</th>
+                  <td className="">PuddingPub.co</td>
+                </tr>
+                <tr className="">
+                  <th className="">Address</th>
+                  <td className="">123-4567 Edge building 1-2-3, Nishiazabu, Minato-Aqua, Heaven, Japan</td>
+                </tr>
+                <tr className="">
+                  <th className="">TEL</th>
+                  <td className="">+886 0912345678</td>
+                </tr>
+                <tr className="">
+                  <th className="">Open</th>
+                  <td className="">5 p.m. - 11 p.m.</td>
+                </tr>
+                <tr className="">
+                  <th className="">Close</th>
+                  <td className="">Sundays and National Holidays</td>
+                </tr>
+                <tr className="">
+                  <th className="">Credit Card</th>
+                  <td className="">VISA / MasterCard / American Express / JCB / DC / 銀聯</td>
+                </tr>
+              </tbody>
+            </InfoTable>
+          </TableOutter>
         </Box>
         {/* section two */}
-        <MapContainer>
-          <GoogleApiWrapper />
-        </MapContainer>
+        <Box>
+          <MapContainer>
+            <GoogleApiWrapper />
+          </MapContainer>
+          <p style={{letterSpacing:'0.1em',lineHeight:'2'}}>
+            <span className="">3 minutes walk from holo Line live station Exit 0 / 5 minutes walk from pekora Line usada station Exit 0 /9 minutes walk from korone Line okayu station Exit te /</span>
+            <a target='_blank' href="https://g.page/ruths-chris-taichung?share" className=""> Open Google Map</a>
+          </p>
+        </Box>
         {/* final section */}
         <FianlSectionPart
           addressFirst={'/about'} 

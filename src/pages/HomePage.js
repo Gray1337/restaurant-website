@@ -62,6 +62,7 @@ const LogoContainer = styled.div`
   @media (min-width:681px){
     margin-bottom:0px;
     max-width:160px;
+    margin-right:24px;
   }
   img{
     @media (min-width:681px){
@@ -267,8 +268,8 @@ const HomePage = () => {
             <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, officiis.
             </Para>
-            <Link to="/menu">
-              <Btn>Menu</Btn>
+            <Link to="/booking">
+              <Btn>Booking Now</Btn>
             </Link>
           </InfoContainer>
         </Row>
@@ -286,8 +287,12 @@ const HomePage = () => {
               <Para>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure eaque earum modi debitis vero quae corporis a! Accusamus minima, eveniet accusantium ratione nostrum totam id sed incidunt doloribus, molestias et.
                 <BtnGroup>
-                  <Btn>Shop's Preference</Btn>
-                  <Btn>Shop Info</Btn>
+                  <Link to='/about'>
+                    <Btn>About</Btn>
+                  </Link>
+                  <Link to='/shopinfo'>
+                    <Btn>Shop's Info</Btn>
+                  </Link>
                 </BtnGroup>
               </Para>
             </ProduceContainer>

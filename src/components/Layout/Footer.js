@@ -4,8 +4,6 @@ import Container from "../Common/Container";
 import footerBg from "../Images/bg.jpg";
 import LogoHorizontal from "../Images/logohorizontal.svg";
 import { FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
-import { DatePicker, Space } from 'antd';
-import moment from 'moment';
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 const Box = styled.div`
@@ -108,6 +106,10 @@ const Pbox = styled.div`
   width:100%;
   padding:2% 4%;
   text-align:left;
+  a{
+    text-decoration:none;
+    color:#fff;
+  }
 `
 
 const FooterBottom = styled.div`
@@ -122,14 +124,6 @@ const FooterBottom = styled.div`
     letter-spacing:0.2rem;
   }  
 `
-function onChange(value, dateString) {
-  console.log('Selected Time: ', value);
-  console.log('Formatted Selected Time: ', dateString);
-}
-
-function onOk(value) {
-  console.log('onOk: ', value);
-}
 
 const Footer = () => {
   return (
@@ -138,10 +132,12 @@ const Footer = () => {
         <Container>
           <Box>
             <InfoContainer>
-              <HorizontalLogo>
-                <img src={LogoHorizontal} alt=''></img>
-              </HorizontalLogo>
-              <P color={'#fff'}>106-0031 Edge building 1-1-1, Nishiazabu, Minato-ku, Tokyo, Japan</P>
+              <Link to='/'>
+                <HorizontalLogo>
+                  <img src={LogoHorizontal} alt=''></img>
+                </HorizontalLogo>
+              </Link>
+              <P color={'#fff'}>123-4567 Edge building 1-2-3, Nishiazabu, Minato-Aqua, Heaven, Japan</P>
               <P>Closed on Sundays and National Holidays</P>
               <FollowBox>
                 <div>Follow us</div>
@@ -159,7 +155,7 @@ const Footer = () => {
                 <BookBlock>
                   <Title>Reservation through Internet</Title>
                   <Pbox>
-                    <DatePicker showTime onChange={onChange} onOk={onOk} style={{fontSize:'18px'}}/>
+                    <Link to='/booking'>Book now</Link>
                   </Pbox>
                 </BookBlock>
                 <BookBlock>

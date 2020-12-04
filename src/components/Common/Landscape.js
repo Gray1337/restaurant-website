@@ -33,10 +33,13 @@ const SectionTitle = styled.div`
 `
 const BgContainer =styled.div`
   width:100%;
-  padding-top:30%;
+  padding-top:60%;
   background-image: ${props => `url(${props.src})`};
   background-position:center;
   background-size:cover;
+  @media (min-width:768px){
+    padding-top:30%;
+  }
 `
 
 const Landscape = ({landscapeImg, title}) =>{

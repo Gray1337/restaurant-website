@@ -67,8 +67,8 @@ const FlexTypeTwo =() =>{
         <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, quae.
         </Para>
-        <Link to="/menu">
-          <Btn>Menu</Btn>
+        <Link to="/shopinfo">
+          <Btn>Shop's Info</Btn>
         </Link>
       </InfoContainer>
       <ImgContainer>

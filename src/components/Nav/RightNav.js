@@ -48,13 +48,10 @@ const RightNav = (props) =>{
         <li>Menu</li>
       </Link>
       <Link to='/shopinfo'>
-        <li>ShopInfo</li>
+        <li>Shop's Info</li>
       </Link>
       <Link to='/booking'>
         <li>Booking</li>
-      </Link>
-      <Link to='/contact'>
-        <li>Contact</li>
       </Link>
     </Ul>
   )
