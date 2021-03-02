@@ -1,6 +1,14 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
+const wipeOut = keyframes`
+  from{
+    width:100%;
+  }
+  to{
+    width:0%;
+  }
+`
 const LandscapeSection = styled.div`
   width: 100%;
   position: relative;
@@ -41,12 +49,25 @@ const BgContainer =styled.div`
     padding-top:30%;
   }
 `
+const CoverImg = styled.div`
+  position: absolute;
+  top:0;
+  right:0;
+  width:100%;
+  height:100%;
+  background-color: #fff;
+  animation: ${wipeOut} 0.8s 2.3s forwards;
+`
 
 const Landscape = ({landscapeImg, title}) =>{
+
   return(
     <LandscapeSection>
-      <BgContainer src={landscapeImg} />
+      <BgContainer 
+        src={landscapeImg} 
+      />
       <SectionTitle>{title}</SectionTitle>
+      <CoverImg />
     </LandscapeSection>
 
   )

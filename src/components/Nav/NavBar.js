@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 import Logo from '../Images/logo.svg'
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Nav = styled.div`

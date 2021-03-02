@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import Mask from '../Animations/Mask';
+import MaskFadeIn from '../Animations/MaskFadeIn';
 
 const Ul = styled.div`
   display:flex;
@@ -14,7 +16,7 @@ const Ul = styled.div`
   right:0;
   z-index:19;
   transition:all .3s;
-  transform:${(props) => props.open ? 'translateX(0%)': 'translateX(100%)'};
+  transform:${(props) => props.open === true ? 'translateX(0%)': 'translateX(100%)'};
   li{
     color:#fff;
     font-size:24px;
@@ -30,30 +32,42 @@ const Ul = styled.div`
     li{
       color:#000;
       padding:10px 16px;
-      :last-child{
-        padding-right:0px;
+      transition:0.2s;
+      position: relative;
+      :hover{
+        font-weight:600;
+        letter-spacing:0.1rem;
+        color:#fff;
+        background-color: #000;
       }
     }
   }
-
+`
+const StyleLink = styled(Link)`
+  :last-child{
+    margin-right:-16px;
+  }
 `
 
-const RightNav = (props) =>{
+
+const RightNav = ({open}) =>{
+  const [coverIt, setCoverIt] = useState('open')
   return(
-    <Ul open={props.open}>
-      <Link to='/about'>
+    <>
+    <Ul open={open}>
+      <StyleLink to='/about' onClick={()=>{setCoverIt('close')}}>
         <li>About</li>
-      </Link>
-      <Link to='/menu'>
+      </StyleLink>
+      <StyleLink to='/menu' onClick={()=>{setCoverIt('close')}}>
         <li>Menu</li>
-      </Link>
-      <Link to='/shopinfo'>
+      </StyleLink>
+      <StyleLink to='/shopinfo' onClick={()=>{setCoverIt('close')}}>
         <li>Shop's Info</li>
-      </Link>
-      <Link to='/booking'>
-        <li>Booking</li>
-      </Link>
+      </StyleLink>
     </Ul>
+    {coverIt === 'open' ? <MaskFadeIn /> : ''}
+    {coverIt === 'open' ? <Mask /> : ''}
+    </>
   )
 }
 

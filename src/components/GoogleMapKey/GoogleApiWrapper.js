@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import steak from '../Images/steak.svg'
 import mapStyle from '../GoogleMapKey/mapStyle'

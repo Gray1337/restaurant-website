@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Container from '../Common/Container';
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
 display: flex;
@@ -34,8 +34,13 @@ const FinalBox = styled.div`
   border:1px solid rgb(225,225,225);
   height:104px;
   margin-bottom:32px;
+  transition:all .3s;
   @media (min-width:1365px){
     margin-bottom:0px;
+  }
+  &:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 20px 0 rgba(0,0,0,0.1);
   }
 `
 const FinalItem = styled.div`
@@ -50,6 +55,7 @@ const PreviewImg = styled.div`
   background-position:center;
   background-repeat: no-repeat;
   background-size:cover;
+  transition:all 1s;
 `
 const FinalContent = styled.div`
   padding:24px;
@@ -61,7 +67,7 @@ const FinalContent = styled.div`
 `
 const FinalSectionPart = ({addressFirst, addressSec, imgSrcFirst, imgSrcSec, titleFirst, titleSec}) =>{
   return(
-    <Container>
+    <Container style={{paddingBottom:'36px'}}>
       <Box>
         <FinalSection>
           <Link to={addressFirst} style={{width:'100%'}}>
@@ -79,7 +85,7 @@ const FinalSectionPart = ({addressFirst, addressSec, imgSrcFirst, imgSrcSec, tit
               <FinalItem>
                 <PreviewImg src={imgSrcSec}></PreviewImg>
               </FinalItem>
-              <FinalContent >
+              <FinalContent>
                 <h1>{titleSec}</h1>
               </FinalContent>
             </FinalBox>

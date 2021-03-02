@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import Default from '../components/Layout/Default';
 import FianlSectionPart from '../components/FinalPart/FinalSectionPart'
 import AboutLinkImg from '../components/Images/image3.jpg'
@@ -17,6 +17,10 @@ import Crusine6 from '../components/Images/image5.jpg'
 import Crusine7 from '../components/Images/image4.jpg'
 import Crusine8 from '../components/Images/image3.jpg'
 import Crusine9 from '../components/Images/image2.jpg'
+import { motion } from "framer-motion";
+import FadeInRight from "../components/Animations/FadeInRight";
+import FadeInBottom from '../components/Animations/FadeInBottom';
+import Booking from '../components/Common/Booking';
 
 const Box = styled.div`
   display: flex;
@@ -76,7 +80,7 @@ const CrusineContainer = styled.div`
   flex-flow:row nowrap;
   margin:-4px;
 `
-const CrusineBox = styled.div`
+const CrusineBox = styled(motion.div)`
   width:33.333333%;
   margin:4px;
   padding-top:25%;
@@ -143,69 +147,92 @@ const Para = styled.div`
     margin-bottom: 0px;
   }
 `;
+const fadeIn = keyframes`
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1
+  }
+`
+const StyledDiv = styled.div`
+  width:100%;
+  height:100%;
+  opacity:0;
+  background-color: #fff;
+  animation: ${fadeIn} 0.5s 2s forwards;
+`
+
 
 const Menu = () =>{
   return(
     <Default>
-      <Landscape 
-      landscapeImg={bgImage}
-      title={'Menu'} 
-      />
-      {/* main section */}
-      <Container>
-        {/* section one */}
-        <Row>
-          <RecommandBox>
-            <RecommandImageContainer src={RecommandImg}/>
-          </RecommandBox>
-          <RecommandBox>
-            <Title>Lorem, ipsum dolor.</Title>
-            <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad.Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad.</Para>
-            <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad cum inventore ea ad.</Para>
-            <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad consectetur adipisicing elit. Et perferendis cum inventore ea ad.</Para>
-          </RecommandBox>
-        </Row>
-        {/* section two */}
-        <CrusineOutter>
-          <CrusineContainer>
-            <CrusineBox src={Crusine1}/>
-            <CrusineBox src={Crusine2}/>
-            <CrusineBox src={Crusine3}/>
-          </CrusineContainer>
-          <CrusineContainer>
-            <CrusineBox src={Crusine4}/>
-            <CrusineBox src={Crusine5}/>
-            <CrusineBox src={Crusine6}/>
-          </CrusineContainer>
-          <CrusineContainer>
-            <CrusineBox src={Crusine7}/>
-            <CrusineBox src={Crusine8}/>
-            <CrusineBox src={Crusine9}/>
-          </CrusineContainer>
-        </CrusineOutter>
-        {/* section three */}
-        <Box style={{border:'1px solid rgb(180, 180, 180)', padding:'2px'}}>
-          <DetileGroup>
-            <TitleGroup>
-              <Title>Remark</Title>
-            </TitleGroup>
-            <ParaBox>
-              <Para>Lorem ipsum dolor sit amet consectetur.</Para>
-              <Para>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Para>
-              <Para>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis nostrum sunt alias omnis.</Para>
-            </ParaBox>
-          </DetileGroup>
-        </Box>
-        {/* final section */}
-        <FianlSectionPart
-          addressFirst={'/about'} 
-          addressSec={'/shopinfo'}
-          imgSrcFirst={AboutLinkImg} 
-          imgSrcSec={ShopLinkImg} 
-          titleFirst={'About'}
-          titleSec={'Shop’s Info'}
-        ></FianlSectionPart>
-      </Container>
+      <StyledDiv style={{overflow:'hidden'}}>
+        <Landscape 
+        landscapeImg={bgImage}
+        title={'Menu'} 
+        />
+        {/* main section */}
+        <Container>
+          {/* section one */}
+          <Row>
+            <RecommandBox>
+              <RecommandImageContainer src={RecommandImg}/>
+            </RecommandBox>
+            <RecommandBox>
+              <Title>Lorem, ipsum dolor.</Title>
+              <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad.Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad.</Para>
+              <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad cum inventore ea ad.</Para>
+              <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis cum inventore ea ad consectetur adipisicing elit. Et perferendis cum inventore ea ad.</Para>
+            </RecommandBox>
+          </Row>
+          {/* section two */}
+          <CrusineOutter>
+            <CrusineContainer>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine1}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine2}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine3}/>
+            </CrusineContainer>
+            <CrusineContainer>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine4}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine5}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine6}/>
+            </CrusineContainer>
+            <CrusineContainer>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine7}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine8}/>
+              <CrusineBox whileHover={{scale:1.3}} src={Crusine9}/>
+            </CrusineContainer>
+          </CrusineOutter>
+          <Booking />
+          {/* section three */}
+          <Box style={{border:'1px solid rgb(180, 180, 180)', padding:'2px'}}>
+            <DetileGroup>
+              <TitleGroup>
+                <FadeInBottom>
+                  <Title>Remark</Title>
+                </FadeInBottom>
+              </TitleGroup>
+              <ParaBox>
+                <FadeInRight>
+                  <Para>Lorem ipsum dolor sit amet consectetur.</Para>
+                  <Para>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Para>
+                  <Para>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis nostrum sunt alias omnis.</Para>
+                </FadeInRight>
+              </ParaBox>
+            </DetileGroup>
+          </Box>
+          {/* final section */}
+          <FianlSectionPart
+            addressFirst={'/about'} 
+            addressSec={'/shopinfo'}
+            imgSrcFirst={AboutLinkImg} 
+            imgSrcSec={ShopLinkImg} 
+            titleFirst={'About'}
+            titleSec={'Shop’s Info'}
+          ></FianlSectionPart>
+        </Container>
+      </StyledDiv>
     </Default>
   )
 }

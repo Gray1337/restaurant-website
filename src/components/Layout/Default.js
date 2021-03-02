@@ -3,7 +3,9 @@ import Header from "./Header";
 import Footer from "./Footer";
 import styled, {css} from "styled-components";
 
+
 const PageHeader = styled.div`
+  width:100%;
   ${(props) =>
     props.fixed &&
     css`

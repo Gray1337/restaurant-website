@@ -5,17 +5,24 @@ import Jumbotron2 from "../components/Images/image8.jpg";
 import Jumbotron3 from "../components/Images/image9.jpg";
 import Jumbotron4 from "../components/Images/image7.jpg";
 import { Carousel } from "antd";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Container from "../components/Common/Container";
 import ClearFix from "../components/Common/ClearFix";
 import Logo from "../components/Images/logo.svg";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RestaurantBg from '../components/Images/restaurantbg.jpg'
 import { useViewport } from "../components/Common/ViewPortContext";
 import FlexContainer from '../components/Common/FlexContainer'
 import FlexTypeOne from '../components/RWD/FlexTypeOne'
 import FlexTypeTwo from '../components/RWD/FlexTypeTwo'
-import Test from '../components/RWD/Test'
+import FadeInUp from "../components/Animations/FadeInUp";
+import FadeInBottom from "../components/Animations/FadeInBottom";
+import FadeInLeft from "../components/Animations/FadeInLeft";
+import FadeInRight from "../components/Animations/FadeInRight";
+import FadeIn from "../components/Animations/FadeIn";
+import { motion } from "framer-motion";
+
+
 
 const Box = styled.div`
   display: flex;
@@ -58,24 +65,20 @@ const LogoContainer = styled.div`
   min-width:75px;
   max-width:130px;
   margin-bottom:36px;
-  position:relative;
   @media (min-width:681px){
-    margin-bottom:0px;
+    margin:auto 0;
     max-width:160px;
     margin-right:24px;
   }
   img{
     @media (min-width:681px){
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
       background-position: left;
       background-size: contain;
       background-repeat: no-repeat;
     }
   }
 `;
-const ProduceContainer = styled.div`
+const ProductContainer = styled.div`
   width:100%;
   max-width:100%;
 `
@@ -143,13 +146,19 @@ const Btn = styled.button`
   height: 50px;
   padding: 4px 8px;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #fff;
   border: 1px solid #000;
   cursor: pointer;
   color: #000;
   margin-right:32px;
+  position: relative;
+  transition:all 0.2s;
   @media (min-width:1365px){
     width:240px;
+  }
+  &:hover{
+    box-shadow:inset 0 0 0 2em #000;
+    color:#fff;
   }
 `;
 const BtnGroup =styled.div`
@@ -157,6 +166,7 @@ const BtnGroup =styled.div`
   flex-flow:row nowrap;
   padding-top:24px;
 `
+
 // 問題:為什麼 width > Desktop 時沒有反應?? 更聰明的做法是?
 const MobileSize = () =>{
   const {width} = useViewport()
@@ -166,139 +176,165 @@ const MobileSize = () =>{
     return <FlexTypeOne />
   } else if ( mobile < width < Desktop){
     return <FlexTypeTwo />
-  } else if ( width > Desktop){
-    <Test />
   }
 }
 // 問題
 
-
+const fadeIn = keyframes`
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+`
+const StyledDiv = styled.div`
+  width:100%;
+  height:100%;
+  opacity:0;
+  background-color: #fff;
+  animation: ${fadeIn} 0.5s 2s forwards;
+`
+const scrollTo = () => {
+  setTimeout(()=>{
+    window.scrollTo({top:2400,behavior:'smooth'})
+  },[100])
+}
 const HomePage = () => {
   return (
-    <Default fixedHeader>
-      <ClearFix height='100px'/>
-      {/* jumbotron */}
-      <Box>
-        <JumbotronContainer>
-          <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
-            <JumboImg src={Jumbotron1} fixed={'fixed'} height={'100vh'}/>
-            <JumboImg src={Jumbotron2} fixed={'fixed'} height={'100vh'}/>
-            <JumboImg src={Jumbotron3} fixed={'fixed'} height={'100vh'}/>
-            <JumboImg src={Jumbotron4} fixed={'fixed'} height={'100vh'}/>
-          </Carousel>
-        </JumbotronContainer>
-        <Des>
-          <JumTitle>WASHOKURE DESIGN</JumTitle>
-          <JumP>Respect Old Things, Create Present Innovate the Tradition</JumP>
-        </Des>
-      </Box>
-      {/* main section */}
-      <Box>
-        {/* section 1 */}
-        <Container>
+    <Default fixedHeader >
+      <StyledDiv>
+        <ClearFix height='100px'/>
+        {/* jumbotron */}
+        <Box style={{overflow:'hidden'}}>
+          <JumbotronContainer>
+            <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
+              <JumboImg src={Jumbotron1} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={Jumbotron2} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={Jumbotron3} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={Jumbotron4} fixed={'fixed'} height={'100vh'}/>
+            </Carousel>
+          </JumbotronContainer>
+          <Des>
+            <FadeInLeft>
+              <JumTitle>WASHOKURE DESIGN</JumTitle>
+            </FadeInLeft>
+            <FadeInBottom>
+              <JumP>Respect Old Things, Create Present Innovate the Tradition</JumP>
+            </FadeInBottom>
+          </Des>
+        </Box>
+        {/* main section */}
+        <Box style={{overflow:'hidden'}}>
+          {/* section 1 */}
+          <Container >
+            <Row>
+              <LogoContainer>
+                <FadeInUp>
+                  <img src={Logo} alt=''></img>
+                </FadeInUp>
+              </LogoContainer>
+              <FadeIn>
+                <ProductContainer 
+                  style={{
+                    paddingLeft: "56px",
+                    borderLeft: "1px solid rgb(189 189 189)",
+                    marginBottom: "0px",
+                  }}>
+                  <Para>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                    atque necessitatibus error, porro veritatis quisquam mollitia
+                    sint delectus sapiente quidem. Expedita sint perspiciatis fuga
+                    illum atque maxime fugit similique tempora hic voluptate
+                    molestiae dolores dolor, eligendi quia explicabo illo sunt
+                    temporibus. Facere sequi pariatur beatae, sint fugiat temporibus
+                    atque totam veniam saepe unde officia accusantium doloremque
+                    nobis consectetur aspernatur nihil.
+                  </Para>
+                </ProductContainer>
+              </FadeIn>
+            </Row>
+          </Container>
+          {/* section 2 */}
           <Row>
-            <LogoContainer>
-              <img src={Logo} alt=''></img>
-            </LogoContainer>
-            <ProduceContainer>
-              <Para
-                style={{
-                  paddingLeft: "56px",
-                  borderLeft: "1px solid rgb(189 189 189)",
-                  marginBottom: "0px",
-                }}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-                atque necessitatibus error, porro veritatis quisquam mollitia
-                sint delectus sapiente quidem. Expedita sint perspiciatis fuga
-                illum atque maxime fugit similique tempora hic voluptate
-                molestiae dolores dolor, eligendi quia explicabo illo sunt
-                temporibus. Facere sequi pariatur beatae, sint fugiat temporibus
-                atque totam veniam saepe unde officia accusantium doloremque
-                nobis consectetur aspernatur nihil.
-              </Para>
-            </ProduceContainer>
+            <ImgContainer>
+              <FadeInLeft>
+                <motion.img  whileHover={{ scale: 1.05 }} src={Jumbotron3} alt=''></motion.img>
+              </FadeInLeft>
+            </ImgContainer>
+            <InfoContainer>
+              <FadeIn>
+                <Title>
+                  Lorem ipsum dolor sit amet elit. Modi, voluptate!
+                </Title>
+              </FadeIn>
+              <FadeInBottom>
+                <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto voluptatum maiores assumenda rem temporibus culpa.
+                </Para>
+              </FadeInBottom>
+              <Link to="/menu">
+                <Btn>Menu</Btn>
+              </Link>
+            </InfoContainer>
           </Row>
-        </Container>
-        {/* section 2 */}
-        <Row>
-          <ImgContainer>
-            <img src={Jumbotron3} alt=''></img>
-          </ImgContainer>
-          <InfoContainer>
-            <Title>
-              Lorem ipsum dolor sit amet elit. Modi, voluptate!
-            </Title>
-            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto voluptatum maiores assumenda rem temporibus culpa.
-            </Para>
-            <Link to="/menu">
-              <Btn>Menu</Btn>
-            </Link>
-          </InfoContainer>
-        </Row>
-        {/* section 3 */}
-        {/* <Row>
-          <ImgContainer>
-            <img src={PlatesBg} alt={''} />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>
-              Lorem ipsum dolor sit amet Modi, voluptate!
-            </Title>
-            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, quae.
-            </Para>
-            <Link to="/menu">
-              <Btn>Menu</Btn>
-            </Link>
-          </InfoContainer>
-        </Row> */}
-        <MobileSize />
-        {/* section 4 */}
-        <Row>
-          <ImgContainer>
-            <img src={Jumbotron4} alt=''/>
-          </ImgContainer>
-          <InfoContainer>
-            <Title>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              voluptate!
-            </Title>
-            <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, officiis.
-            </Para>
-            <Link to="/booking">
-              <Btn>Booking Now</Btn>
-            </Link>
-          </InfoContainer>
-        </Row>
-        {/* section 5 */}
-        <Row>
-          <JumboImg src={RestaurantBg} height={'100%'} fixed={'initial'} style={{paddingTop:'30%'}}/>
-        </Row>
-        {/* bottom */}
-        <Row>
-          <FlexContainer>
-            <AboutContainer>
-              <Title>Lorem ipsum dolor sit amet consectetur?</Title>
-            </AboutContainer>
-            <ProduceContainer>
-              <Para>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure eaque earum modi debitis vero quae corporis a! Accusamus minima, eveniet accusantium ratione nostrum totam id sed incidunt doloribus, molestias et.
-                <BtnGroup>
-                  <Link to='/about'>
-                    <Btn>About</Btn>
-                  </Link>
-                  <Link to='/shopinfo'>
-                    <Btn>Shop's Info</Btn>
-                  </Link>
-                </BtnGroup>
-              </Para>
-            </ProduceContainer>
-          </FlexContainer>
-        </Row>
-      </Box>
+          {/* section 3 */}
+          <MobileSize />
+          {/* section 4 */}
+          <Row>
+            <ImgContainer>
+              <FadeIn>
+                <motion.img whileHover={{ scale: 1.05 }} src={Jumbotron4} alt=''/>
+              </FadeIn>
+            </ImgContainer>
+            <InfoContainer >
+              <FadeInUp>
+                <Title>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
+                  voluptate!
+                </Title>
+              </FadeInUp>
+              <FadeInRight>
+                <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, officiis.
+                </Para>
+              </FadeInRight>
+              <Link to="/menu" onClick={scrollTo}>
+                <Btn>Booking Now</Btn>
+              </Link>
+            </InfoContainer>
+          </Row>
+          {/* section 5 */}
+          <Row>
+            <JumboImg src={RestaurantBg} height={'100%'} fixed={'initial'} style={{paddingTop:'30%'}}/>
+          </Row>
+          {/* bottom */}
+          <Row>
+            <FlexContainer>
+              <AboutContainer>
+                <FadeIn>
+                  <Title>Lorem ipsum dolor sit amet consectetur?</Title>
+                </FadeIn>
+              </AboutContainer>
+              <ProductContainer>
+                <FadeInUp>
+                  <Para>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure eaque earum modi debitis vero quae corporis a! Accusamus minima, eveniet accusantium ratione nostrum totam id sed incidunt doloribus, molestias et.
+                    <BtnGroup>
+                      <Link to='/about'>
+                        <Btn>About</Btn>
+                      </Link>
+                      <Link to='/shopinfo'>
+                        <Btn>Shop's Info</Btn>
+                      </Link>
+                    </BtnGroup>
+                  </Para>
+                </FadeInUp>
+              </ProductContainer>
+            </FlexContainer>
+          </Row>
+        </Box>
+      </StyledDiv>
     </Default>
   );
 };

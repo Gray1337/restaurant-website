@@ -1,7 +1,11 @@
+import {useEffect} from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import PlatesBg from "../Images/platesbg.png";
-const Para = styled.div`
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from 'react-intersection-observer';
+
+const Para = styled(motion.div)`
   font-size: 18px;
   line-height: 2.2;
   margin-bottom: 24px;
@@ -12,13 +16,19 @@ const Btn = styled.button`
   height: 50px;
   padding: 4px 8px;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #fff;
   border: 1px solid #000;
   cursor: pointer;
   color: #000;
   margin-right:32px;
+  position: relative;
+  transition:all 0.2s;
   @media (min-width:1365px){
     width:240px;
+  }
+  &:hover{
+    box-shadow:inset 0 0 0 2em #000;
+    color:#fff;
   }
 `;
 const Row = styled.div`
@@ -41,7 +51,7 @@ const ImgContainer = styled.div`
     width:100%
   }
 `
-  const InfoContainer = styled.div`
+  const InfoContainer = styled(motion.div)`
   width:100%;
   padding:0 10%;
   width:100%;
@@ -50,7 +60,7 @@ const ImgContainer = styled.div`
     width:40%;
   }
 `
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-size: 24px;
   margin-bottom: 24px;
   line-height: 1.7;
@@ -58,16 +68,40 @@ const Title = styled.div`
 `;
 
 const FlexTypeOne =() =>{
+  const [ ref, inView ] = useInView();
+  const variants = {
+    visible:{
+      opacity:1,
+      transition:{
+        duration:1
+      }
+    },
+    hidden:{
+      opacity:0,
+      transition:{
+        duration:1
+      }
+    },
+  }
+  const fadeIn = useAnimation()
+  useEffect(() => {
+    if (inView) {
+      fadeIn.start('visible')
+    }
+    if (!inView) {
+      fadeIn.start('hidden')
+    }
+  }, [inView,fadeIn]);
   return(
-    <Row>
+    <Row ref={ref}>
       <ImgContainer>
         <img src={PlatesBg} alt={''} />
       </ImgContainer>
       <InfoContainer>
-        <Title>
+        <Title animate={fadeIn} variants={variants}>
           Lorem ipsum dolor sit amet Modi, voluptate!
         </Title>
-        <Para style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
+        <Para animate={fadeIn} variants={variants} style={{ borderTop: "1px solid #e8e8e8", paddingTop: "8px" }}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, quae.
         </Para>
         <Link to="/shopinfo">

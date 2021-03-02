@@ -4,7 +4,7 @@ import Container from "../Common/Container";
 import footerBg from "../Images/bg.jpg";
 import LogoHorizontal from "../Images/logohorizontal.svg";
 import { FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
   display:flex;
@@ -111,6 +111,17 @@ const Pbox = styled.div`
     color:#fff;
   }
 `
+const BookByInt = styled(Link)`
+  border: 1px solid #fff;
+  width:100%;
+  padding:2% 4%;
+  text-align:left;
+  text-decoration:none;
+  color:#fff;
+  &:hover{
+    color:#fff;
+  }
+`
 
 const FooterBottom = styled.div`
   width:100%;
@@ -126,6 +137,11 @@ const FooterBottom = styled.div`
 `
 
 const Footer = () => {
+  const scrollTo = () => {
+    setTimeout(()=>{
+      window.scrollTo({top:2400,behavior:'smooth'})
+    },[100])
+  }
   return (
     <div className="">
       <StyledFooter src={footerBg}>
@@ -154,9 +170,9 @@ const Footer = () => {
               <BookBox>
                 <BookBlock>
                   <Title>Reservation through Internet</Title>
-                  <Pbox>
-                    <Link to='/booking'>Book now</Link>
-                  </Pbox>
+                  <BookByInt to='/menu' onClick={scrollTo}>
+                    Book now
+                  </BookByInt>
                 </BookBlock>
                 <BookBlock>
                   <Title>Book by Phone</Title>
