@@ -18,7 +18,6 @@ import Crusine7 from '../components/Images/image4.jpg'
 import Crusine8 from '../components/Images/image3.jpg'
 import Crusine9 from '../components/Images/image2.jpg'
 import { motion } from "framer-motion";
-import FadeInRight from "../components/Animations/FadeInRight";
 import FadeInBottom from '../components/Animations/FadeInBottom';
 import Booking from '../components/Common/Booking';
 
@@ -214,11 +213,11 @@ const Menu = () =>{
                 </FadeInBottom>
               </TitleGroup>
               <ParaBox>
-                <FadeInRight>
+                <FadeInBottom>
                   <Para>Lorem ipsum dolor sit amet consectetur.</Para>
                   <Para>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Para>
                   <Para>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis nostrum sunt alias omnis.</Para>
-                </FadeInRight>
+                </FadeInBottom>
               </ParaBox>
             </DetileGroup>
           </Box>
