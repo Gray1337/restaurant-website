@@ -197,7 +197,7 @@ const StyledDiv = styled.div`
 `
 const scrollTo = () => {
   setTimeout(()=>{
-    window.scrollTo({top:2400,behavior:'smooth'})
+    window.scrollTo({top:2000,behavior:'smooth'})
   },[100])
 }
 const HomePage = () => {

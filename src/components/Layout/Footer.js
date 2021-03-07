@@ -139,7 +139,7 @@ const FooterBottom = styled.div`
 const Footer = () => {
   const scrollTo = () => {
     setTimeout(()=>{
-      window.scrollTo({top:2400,behavior:'smooth'})
+      window.scrollTo({top:2000,behavior:'smooth'})
     },[100])
   }
   return (
