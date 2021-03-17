@@ -45,6 +45,7 @@ const JumboImg = styled.div`
   background-attachment: ${props => props.fixed};
   height: ${props => props.height};
   width: 100%;
+  max-width: 100%;
 `;
 const JumbotronContainer = styled.div`
   width: 100%;
