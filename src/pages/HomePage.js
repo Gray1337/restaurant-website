@@ -1,5 +1,6 @@
 import React from "react";
 import Default from "../components/Layout/Default";
+import JumbotronTest from '../components/Images/testBgRetina.jpg'
 import Jumbotron1 from "../components/Images/image4.jpg";
 import Jumbotron2 from "../components/Images/image8.jpg";
 import Jumbotron3 from "../components/Images/image9.jpg";
@@ -44,8 +45,8 @@ const JumboImg = styled.div`
   background-repeat: no-repeat;
   background-attachment: ${props => props.fixed};
   height: ${props => props.height};
-  width: 100%;
   max-width: 100%;
+
 `;
 const JumbotronContainer = styled.div`
   width: 100%;
@@ -210,7 +211,7 @@ const HomePage = () => {
         <Box style={{overflow:'hidden'}}>
           <JumbotronContainer>
             <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
-              <JumboImg src={Jumbotron1} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={JumbotronTest} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron2} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron3} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron4} fixed={'fixed'} height={'100vh'}/>
