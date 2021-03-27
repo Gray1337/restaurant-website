@@ -1,6 +1,5 @@
 import React from "react";
 import Default from "../components/Layout/Default";
-import JumbotronTest from '../components/Images/testBgRetina.jpg'
 import Jumbotron1 from "../components/Images/image4.jpg";
 import Jumbotron2 from "../components/Images/image8.jpg";
 import Jumbotron3 from "../components/Images/image9.jpg";
@@ -41,12 +40,11 @@ const JumP = styled.div`
 const JumboImg = styled.div`
   background-image: ${(props) => `url(${props.src})`};
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-attachment: ${props => props.fixed};
   height: ${props => props.height};
   max-width: 100%;
-
 `;
 const JumbotronContainer = styled.div`
   width: 100%;
@@ -206,12 +204,12 @@ const HomePage = () => {
   return (
     <Default fixedHeader >
       <StyledDiv>
-        <ClearFix height='100px'/>
+        <ClearFix/>
         {/* jumbotron */}
         <Box style={{overflow:'hidden'}}>
           <JumbotronContainer>
             <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
-              <JumboImg src={JumbotronTest} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={Jumbotron1} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron2} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron3} fixed={'fixed'} height={'100vh'}/>
               <JumboImg src={Jumbotron4} fixed={'fixed'} height={'100vh'}/>
