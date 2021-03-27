@@ -40,7 +40,7 @@ const JumP = styled.div`
 const JumboImg = styled.div`
   background-image: ${(props) => `url(${props.src})`};
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: ${props => props.fixed};
   height: ${props => props.height};
