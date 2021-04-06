@@ -42,9 +42,12 @@ const JumboImg = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: ${props => props.fixed};
+  background-attachment: scroll;
   height: ${props => props.height};
   max-width: 100%;
+  @media (min-width:1365px){
+    background-attachment: fixed;
+  }
 `;
 const JumbotronContainer = styled.div`
   width: 100%;
@@ -209,10 +212,10 @@ const HomePage = () => {
         <Box style={{overflow:'hidden'}}>
           <JumbotronContainer>
             <Carousel effect="fade" autoplay dots={false} pauseOnHover={false}>
-              <JumboImg src={Jumbotron1} fixed={'fixed'} height={'100vh'}/>
-              <JumboImg src={Jumbotron2} fixed={'fixed'} height={'100vh'}/>
-              <JumboImg src={Jumbotron3} fixed={'fixed'} height={'100vh'}/>
-              <JumboImg src={Jumbotron4} fixed={'fixed'} height={'100vh'}/>
+              <JumboImg src={Jumbotron1} height={'100vh'}/>
+              <JumboImg src={Jumbotron2} height={'100vh'}/>
+              <JumboImg src={Jumbotron3} height={'100vh'}/>
+              <JumboImg src={Jumbotron4} height={'100vh'}/>
             </Carousel>
           </JumbotronContainer>
           <Des>
